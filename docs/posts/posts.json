@@ -1,19 +1,19 @@
 [
   {
     "path": "posts/welcome/",
-    "title": "Welcome to My Blog",
+    "title": "Welcome to Stat 479",
     "description": "Welcome to our new blog, My Blog. We hope you enjoy \nreading what we have to say!",
     "author": [
       {
-        "name": "Nora Jones",
+        "name": "Haoming Chen",
         "url": "https://example.com/norajones"
       }
     ],
     "date": "2021-03-24",
     "categories": [],
-    "contents": "\r\n\r\n\r\n\r\n",
+    "contents": "\r\nI can write my first post\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-03-24T23:04:10-05:00",
-    "input_file": {}
+    "last_modified": "2021-03-24T23:16:38-05:00",
+    "input_file": "welcome.utf8.md"
   }
 ]
