@@ -4,16 +4,51 @@ site: distill::distill_website
 listing: posts
 ---
 
-```{r}
+<div class="row" style="padding-top: 30px;">
+<div class="col-sm-8">
+
+# **Stat 479**
+
+### *Madison Crime* {style="padding-top: 0px;"}
+
+This is the course website for Psyc 73800: Cognitive Psychology (Fall 2020), offered through the Cognition and Comparative Psychology (CCP) training area, Department of Psychology, Graduate Center of CUNY.
+
+Course Coordinator: Matthew Crump [mcrump@brooklyn.cuny.edu](mcrump@brooklyn.cuny.edu)
+
+This course is co-taught by several faculty from CCP, who will each lead a 2-week module on various topics in Cognitive Psychology. The readings and assignments are posted on the blackboard for this course. Emails for each module leader are also available on Blackboard.
+
+1. [Matthew Crump](https://crumplab.github.io): Foundations
+2. [Andrew Delamater](http://academic.brooklyn.cuny.edu/psych/delam/): Learning
+3. [Virginia Valian](http://www.hunter.cuny.edu/psychology/people/faculty/cognitive-psychology/valian): Language
+4. [Sandeep Prasada](http://www.hunter.cuny.edu/psychology/people/faculty/cognitive-psychology/prasada): Concepts
+5. [Natalie Kacinick](http://www.brooklyn.cuny.edu/web/academics/faculty/faculty_profile.jsp?faculty=803): Embodied Cognition
+6. [Jennifer Mangels](https://www.baruch.cuny.edu/wsas/academics/psychology/jmangels.htm): Decision-Making
+
+</div>
+<div class="col-sm-4">
+
+![](images/cognitive_science.png)
+
+</div>
+</div>
+
+```{r echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tidyr)
 library(leaflet)
+library("robservable")
 library(rgdal)
 data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.csv")
 ```
 
+
 ```{r}
+robservable("@chanwutk/happiness-of-each-country", 6, height = 750)
+```
+
+
+```{r echo=FALSE}
 data$Occur_date <- format(as.Date(data$Occur_date, format = "%m/%d/%Y"), "%Y-%m-%d")
 data$Occur_weekday <- weekdays(as.Date(data$Occur_date))
 new_data <- data[, c(10,13,9,2,12,11,5,6,7,8)] # reoder columns
@@ -25,16 +60,16 @@ new_data<- new_data %>%
   arrange(desc(Occur_date))
 ```
 
-```{r}
+```{r echo=FALSE}
 robbery = new_data %>%
   filter(incident == "Robbery")
 disturbance = new_data %>%
   filter(incident == "Disturbance")
 ```
 
-```{r}
+```{r echo=FALSE}
 zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_53714.geojson")
-zip53714
+
 ```
 
 ```{r}
