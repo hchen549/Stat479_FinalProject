@@ -3,3 +3,49 @@ title: "My Blog"
 site: distill::distill_website
 listing: posts
 ---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidyr)
+library(leaflet)
+library(rgdal)
+data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.csv")
+```
+
+```{r}
+data$Occur_date <- format(as.Date(data$Occur_date, format = "%m/%d/%Y"), "%Y-%m-%d")
+data$Occur_weekday <- weekdays(as.Date(data$Occur_date))
+new_data <- data[, c(10,13,9,2,12,11,5,6,7,8)] # reoder columns
+new_data<-new_data[-c(7,39,58,62), ]
+new_data<-new_data[!grepl("1971|1973|1994|1997|2008|2011|2018", new_data$Occur_date),]
+new_data$time<-format(strptime(new_data$time, "%I:%M %p"), format="%H:%M")
+
+new_data<- new_data %>% 
+  arrange(desc(Occur_date))
+```
+
+```{r}
+robbery = new_data %>%
+  filter(incident == "Robbery")
+disturbance = new_data %>%
+  filter(incident == "Disturbance")
+```
+
+```{r}
+zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_53714.geojson")
+zip53714
+```
+
+```{r}
+m = leaflet() %>%
+  addTiles() %>%
+  #addProviderTiles(providers$Stamen.Watercolor) %>%
+  addPolygons(data = zip53714, weight = 1) %>%
+  addCircleMarkers(lng = robbery$lon, lat = robbery$lat, color = "red", radius = 0.5, group = "robbery") %>%
+  addCircleMarkers(lng = disturbance$lon, lat = disturbance$lat, color = "blue", radius = 0.5, group = "disturbance") %>%
+  addLayersControl(overlayGroups = c("robbery", "disturbance"),
+                   options = layersControlOptions(collapsed = F)) %>%
+  setView(lng = -89.23, lat =43.04, zoom = 10)
+m
+```

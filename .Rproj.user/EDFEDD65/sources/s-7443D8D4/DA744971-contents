@@ -1,16 +1,22 @@
 ---
-title: "My Blog"
-site: distill::distill_website
-listing: posts
+title: "479 project"
+author: "Siyu Liang"
+date: "3/10/2021"
+output: html_document
 ---
 
-```{r}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tidyr)
 library(leaflet)
 library(rgdal)
 data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.csv")
+```
+
+
+```{r}
+data
 ```
 
 ```{r}
@@ -23,7 +29,19 @@ new_data$time<-format(strptime(new_data$time, "%I:%M %p"), format="%H:%M")
 
 new_data<- new_data %>% 
   arrange(desc(Occur_date))
+
+
+
+saveRDS(new_data,"479_project.RDS")
+sum(is.na(new_data$zip))
 ```
+
+```{r}
+new_data %>%
+  count(incident, sort = T) %>%
+  arrange(desc(n))
+```
+
 
 ```{r}
 robbery = new_data %>%
@@ -32,10 +50,15 @@ disturbance = new_data %>%
   filter(incident == "Disturbance")
 ```
 
+
 ```{r}
 zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_53714.geojson")
 zip53714
 ```
+
+
+
+
 
 ```{r}
 m = leaflet() %>%
@@ -49,3 +72,4 @@ m = leaflet() %>%
   setView(lng = -89.23, lat =43.04, zoom = 10)
 m
 ```
+
