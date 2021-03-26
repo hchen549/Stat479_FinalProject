@@ -3,7 +3,7 @@
     "path": "C:/Users/haomi/OneDrive - UW-Madison/2021 Spring semester/Stat 479/Project/stat479_FinalProject/index.Rmd",
     "project_path": "index.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "1485404767",
     "contents": "",
     "dirty": false,
     "created": 1616645073597.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "34,16",
-        "scrollLine": "22"
+        "cursorPosition": "23,0",
+        "scrollLine": "9"
     },
     "folds": "",
-    "lastKnownWriteTime": 1616693556,
+    "lastKnownWriteTime": 1616718517,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1616693556311,
+    "last_content_update": 1616718517421,
     "read_only": false,
     "read_only_alternatives": []
 }
