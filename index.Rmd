@@ -32,12 +32,27 @@ library(tidyr)
 library(leaflet)
 library("robservable")
 library(rgdal)
+library("ggnetwork")
+library("sf")
 data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.csv")
 ```
 
 
 ```{r}
-robservable("@hchen549/final-project", include = c("viewof crimeCategory","viewof chosenDate", "crimePlot"),height = 1400)
+robservable("@hchen549/final-project", include = c("viewof crimeCategory","viewof chosenDate", "crimePlot"),height = 800)
+```
+
+
+
+```{r}
+robservable("@hchen549/heatmap", include = c("chart_2019") ,
+            input = list(
+    title = "COVID-19 deaths",
+    subtitle = "Cumulative number of COVID-19 deaths by country",
+    source = "Source : Johns Hopkins University"
+  ),height = 150, width = 1200)
+robservable("@hchen549/heatmap", include = c("chart_2020") ,height = 150, width = 1200)
+robservable("@hchen549/heatmap", include = c("chart_2021") ,height = 150, width = 1200)
 ```
 
 
@@ -50,7 +65,13 @@ new_data<-new_data[!grepl("1971|1973|1994|1997|2008|2011|2018", new_data$Occur_d
 new_data$time<-format(strptime(new_data$time, "%I:%M %p"), format="%H:%M")
 
 new_data<- new_data %>% 
-  arrange(desc(Occur_date))
+  arrange(desc(Occur_date)) %>%
+  filter(!is.na(lon)) %>%
+  filter(!is.na(lat))
+
+# new_data
+geo_data = st_as_sf(new_data, coords = c("lon", "lat"),  crs = 4326)
+# geo_data
 
 # write.csv(new_data, "new_data.csv")
 ```
@@ -66,6 +87,13 @@ disturbance = new_data %>%
 zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_53714.geojson")
 
 ```
+
+```{r}
+robservable("@hchen549/leaflet", include = c("viewof crimeCategory", "crimeMap"),height = 800, width = 600)
+```
+
+
+
 
 ```{r}
 m = leaflet() %>%
