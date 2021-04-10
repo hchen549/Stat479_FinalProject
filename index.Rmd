@@ -4,8 +4,8 @@ site: distill::distill_website
 listing: posts
 ---
 
-<div class="row" style="padding-top: 30px;">
-<div class="col-sm-8">
+<div class="row" style="padding-top: 10px;">
+<div class="col-sm-10">
 
 # **Stat 479**
 
@@ -17,12 +17,17 @@ This is the course website for Stat 479 Data Visualization (Spring 2021) Final P
 This course explore the crime occured in Madison area from 2019 to 2021
 
 
+### *Data Source*
+
+
+### *Conclusion*
+
+
+
+
 
 </div>
-<div class="col-sm-4">
 
-
-</div>
 </div>
 
 ```{r echo=FALSE}
@@ -39,7 +44,7 @@ data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.cs
 
 
 ```{r}
-robservable("@hchen549/final-project", include = c("viewof crimeCategory","viewof chosenDate", "crimePlot"),height = 800)
+# robservable("@hchen549/final-project", include = c("viewof crimeCategory","viewof chosenDate", "crimePlot"),height = 800)
 ```
 
 
@@ -89,7 +94,7 @@ zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_537
 ```
 
 ```{r}
-robservable("@hchen549/leaflet", include = c("viewof crimeCategory", "crimeMap"),height = 800, width = 600)
+robservable("@hchen549/leaflet", include = c("viewof crimeCategory", "viewof start_date", "viewof end_date", "crimeMap"), height = 800, width = 600)
 ```
 
 
