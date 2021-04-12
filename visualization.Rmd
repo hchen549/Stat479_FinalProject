@@ -1,34 +1,32 @@
 ---
 title: "Visualization"
-site: distill::distill_website
-listing: posts
+description: |
+  An explanation of how to read or interact with each visualization 
+# site: distill::distill_website
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    toc_collapsed: false
+    self_contained: True
 
 ---
 
-
-
-<div class="row">
+<div class="row" style="padding-top: 10px;">
 <div class="col-sm-10">
 
-# **Stat 479**
-
-### 1 *Madison Crime* {style="padding-top: 0px;"}
-
-This is the course website for Stat 479 Data Visualization (Spring 2021) Final Project Department of Statistics, UW-Madison.
 
 
-This course explore the crime occured in Madison area from 2019 to 2021
 
-
+## *Visualization*
 
 
 </div>
 
 </div>
 
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tidyr)
 library(leaflet)
@@ -44,19 +42,38 @@ data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.cs
 # robservable("@hchen549/final-project", include = c("viewof crimeCategory","viewof chosenDate", "crimePlot"),height = 800)
 ```
 
-### 2. Crime Activity Heatmap
 
-```{r, fig.cap="Heatmap", layout="l-body-outset", fig.width=6, fig.height=4.5}
-robservable("@hchen549/heatmap", include = c("chart_2019") ,
+## Crime Activity Heatmap
+
+```{r, fig.width=6, fig.height= 4.5}
+# robservable("@hchen549/heatmap", include = c("chart_2019") ,
+#             input = list(
+#     title = "COVID-19 deaths",
+#     subtitle = "Cumulative number of COVID-19 deaths by country",
+#     source = "Source : Johns Hopkins University"
+#   ),height = 150, width = 1200)
+# robservable("@hchen549/heatmap", include = c("chart_2020") ,height = 150, width = 1200)
+# robservable("@hchen549/heatmap", include = c("chart_2021") ,height = 150, width = 1200)
+```
+
+```{r, fig.width=10, fig.height= 1.6}
+robservable("@hchen549/heatmap", include = c("chart_2020") ,
             input = list(
     title = "COVID-19 deaths",
     subtitle = "Cumulative number of COVID-19 deaths by country",
     source = "Source : Johns Hopkins University"
-  ),height = 150, width = 1200)
-robservable("@hchen549/heatmap", include = c("chart_2020") ,height = 150, width = 1200)
-robservable("@hchen549/heatmap", include = c("chart_2021") ,height = 150, width = 1200)
+  ))
+robservable("@hchen549/heatmap", include = c("chart_2021") ,
+            input = list(
+    title = "COVID-19 deaths",
+    subtitle = "Cumulative number of COVID-19 deaths by country",
+    source = "Source : Johns Hopkins University"
+  ))
+
 ```
 
+### Explanation
+### Conclusion
 
 ```{r echo=FALSE}
 data$Occur_date <- format(as.Date(data$Occur_date, format = "%m/%d/%Y"), "%Y-%m-%d")
@@ -90,11 +107,27 @@ zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_537
 
 ```
 
-### 3. Crime Distribution
 
-```{r layout="l-body-outset"}
+## Crime Distribution
+
+```{r, l-body-outset}
 robservable("@hchen549/leaflet", include = c("viewof crimeCategory", "viewof start_date", "viewof end_date", "crimeMap"), height = 800, width = 600)
 ```
 
+### Explanation
+### Conclusion
 
+
+```{r}
+m = leaflet() %>%
+  addTiles() %>%
+  #addProviderTiles(providers$Stamen.Watercolor) %>%
+  addPolygons(data = zip53714, weight = 1) %>%
+  addCircleMarkers(lng = robbery$lon, lat = robbery$lat, color = "red", radius = 0.5, group = "robbery") %>%
+  addCircleMarkers(lng = disturbance$lon, lat = disturbance$lat, color = "blue", radius = 0.5, group = "disturbance") %>%
+  addLayersControl(overlayGroups = c("robbery", "disturbance"),
+                   options = layersControlOptions(collapsed = F)) %>%
+  setView(lng = -89.23, lat =43.04, zoom = 10)
+m
+```
 

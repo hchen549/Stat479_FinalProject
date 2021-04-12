@@ -1,7 +1,9 @@
 ---
-title: "My Blog"
+title: "Project Introduction"
+description: |
+  Objectives and Significance of the Project
 site: distill::distill_website
-listing: posts
+
 ---
 
 <div class="row" style="padding-top: 10px;">
@@ -49,15 +51,16 @@ data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.cs
 
 
 
-```{r}
-robservable("@hchen549/heatmap", include = c("chart_2019") ,
-            input = list(
-    title = "COVID-19 deaths",
-    subtitle = "Cumulative number of COVID-19 deaths by country",
-    source = "Source : Johns Hopkins University"
-  ),height = 150, width = 1200)
-robservable("@hchen549/heatmap", include = c("chart_2020") ,height = 150, width = 1200)
-robservable("@hchen549/heatmap", include = c("chart_2021") ,height = 150, width = 1200)
+```{r figure.height = 3}
+# robservable("@hchen549/heatmap", include = c("chart_2019") ,
+#             input = list(
+#     title = "COVID-19 deaths",
+#     subtitle = "Cumulative number of COVID-19 deaths by country",
+#     source = "Source : Johns Hopkins University"
+#   ),height = 150, width = 1200)
+robservable("@hchen549/heatmap", include = c("chart_2020"))
+robservable("@hchen549/heatmap", include = c("chart_2021"))
+
 ```
 
 
