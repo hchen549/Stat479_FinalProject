@@ -1,9 +1,6 @@
 ---
 title: "Visualization"
 site: distill::distill_website
-author:
-- name: Haoming Chen
-  affiliation: University of Wisconsin-Madison
 listing: posts
 
 ---
@@ -95,22 +92,9 @@ zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_537
 
 ### 3. Crime Distribution
 
-```{r, layout="l-body-outset"}
-robservable("@hchen549/leaflet", include = c("viewof crimeCategory", "viewof start_date", "viewof end_date", "crimeMap"), height = 800, width = 1200)
+```{r layout="l-body-outset"}
+robservable("@hchen549/leaflet", include = c("viewof crimeCategory", "viewof start_date", "viewof end_date", "crimeMap"), height = 800, width = 600)
 ```
 
 
 
-
-```{r}
-m = leaflet() %>%
-  addTiles() %>%
-  #addProviderTiles(providers$Stamen.Watercolor) %>%
-  addPolygons(data = zip53714, weight = 1) %>%
-  addCircleMarkers(lng = robbery$lon, lat = robbery$lat, color = "red", radius = 0.5, group = "robbery") %>%
-  addCircleMarkers(lng = disturbance$lon, lat = disturbance$lat, color = "blue", radius = 0.5, group = "disturbance") %>%
-  addLayersControl(overlayGroups = c("robbery", "disturbance"),
-                   options = layersControlOptions(collapsed = F)) %>%
-  setView(lng = -89.23, lat =43.04, zoom = 10)
-m
-```
