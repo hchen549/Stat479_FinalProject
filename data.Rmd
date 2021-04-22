@@ -1,7 +1,13 @@
 ---
 title: "Data Source"
 description: |
-  A description of the data sources used, with appropriate references / links. 
+  A description of the data sources used, with appropriate references / links.
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    toc_collapsed: false
+    self_contained: True 
 ---
 
 ```{r setup, include=FALSE}
