@@ -160,11 +160,11 @@ m = leaflet() %>%
 m
 ```
 
+## Crime by zipcode
+
 ```{r}
 zipfile = readOGR("./data/wi_zip.shp")
-# zipfile
-```
-```{r}
+
 unique_zip = new_data %>%
   group_by(zip) %>%
   summarise(count = n()) %>%
@@ -172,17 +172,13 @@ unique_zip = new_data %>%
 
 zipfile = subset(zipfile, is.element(zipfile$ZCTA5CE10, unique_zip$zip))
 
+unique_zip = unique_zip[order(match(unique_zip$zip,zipfile$ZCTA5CE10)), ]
 
 # zipfile
 
 # order(match(unique_zip$zip,zipfile$ZCTA5CE10))
 ```
 
-```{r}
-unique_zip = unique_zip[order(match(unique_zip$zip,zipfile$ZCTA5CE10)), ]
-unique_zip
-
-```
 
 
 ```{r}
@@ -230,6 +226,9 @@ ggplot(data_2019,aes(x = as.factor(zip), y = n)) +
   
 
 ```
+
+### Explanation
+### Conclusion
 
 
 ```{r}
