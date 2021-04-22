@@ -16,7 +16,7 @@ site: distill::distill_website
 This is the course website for Stat 479 Data Visualization (Spring 2021) Final Project Department of Statistics, UW-Madison.
 
 
-This course explore the crime occured in Madison area from 2019 to 2021
+According to the Madison Police Department's annual reports from 2015 to 2019, the crime statistics have shown an increase from 14,265 to 26,689. The increasing index leads us to the idea of constructing a data visualization in community crime analysis. By integrating the map of Madison with visual techniques, it will come in handy for residents to check street safety and for future researchers to analyze related topics such as the crime rates in Madison based on crime category, date, and zip codes.
 
 
 ### *Data Source*
@@ -43,6 +43,8 @@ library("ggnetwork")
 library("sf")
 data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.csv")
 ```
+
+
 
 
 ```{r}

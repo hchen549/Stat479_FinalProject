@@ -10,3 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ### Data Source
+
+
+
+The raw data we found is in the 2019 to 2021 incidents reports in the [City of Madison Police Department webpage](https://www.cityofmadison.com/police/newsroom/incidentreports/). The incidents report contains six major parts, including release date, incident category, case number, address, the release person, and the update date. In addition to the major information, a detailed recording of the incident situation is presented as clicking each [case.](https://www.cityofmadison.com/police/newsroom/incidentreports/incident.cfm?id=28326) With the above data, an extensive [data manipulation](https://docs.google.com/spreadsheets/d/14t1SoGIT-gLi03uqGJSeXHm7P8TMx43eeJLtNDRCeow/edit?usp=sharing) has been done to prepare the data for further visualization. For example, the time of day and weekday is added to the release date and the longitude, and latitude information is added based on the address.
