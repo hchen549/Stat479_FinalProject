@@ -182,7 +182,7 @@ unique_zip = unique_zip[order(match(unique_zip$zip,zipfile$ZCTA5CE10)), ]
 
 
 ```{r}
-pal <- colorQuantile("YlOrRd", domain=(unique_zip$count), n = 8)
+pal <- colorNumeric("YlOrRd", domain=(unique_zip$count))
 
 
 leaflet() %>%
@@ -192,8 +192,8 @@ leaflet() %>%
               popup = paste("Region: ", unique_zip$zip, "<br>",
                             "Count: ", unique_zip$count, "<br>")) %>% 
              
-  setView(lng = -89.23, lat =43.04, zoom = 10) %>%
-  addLegend(values= unique_zip$count,pal=pal,title="Incidents")
+  setView(lng = -89.30, lat =43.04, zoom = 9) %>%
+  addLegend(position = "bottomleft", values= unique_zip$count,pal=pal,title="Counts")
 
   
 ```
