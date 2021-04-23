@@ -7,10 +7,6 @@ site: distill::distill_website
 
 ---
 
-<div class="row" style="padding-top: 0px;">
-<div class="col-sm-10">
-
-
 ### *Madison Crime* 
 
 This is the website for Stat 479 Data Visualization Final Project (Group 2) Department of Statistics, UW-Madison.
@@ -20,4 +16,11 @@ This is the website for Stat 479 Data Visualization Final Project (Group 2) Depa
 
 According to the Madison Police Department's annual reports from 2015 to 2019, the crime statistics have shown an increase from 14,265 to 26,689. The increasing index leads us to the idea of constructing a data visualization in community crime analysis. By integrating the map of Madison with visual techniques, it will come in handy for residents to check street safety and for future researchers to analyze related topics such as the crime rates in Madison based on crime category, date, and zip codes.
 
+### Code
+
+* Observable Notebook
+  1. Time Series [Heatmap](https://observablehq.com/@hchen549/heatmap)
+  2. [Leaflet map](https://observablehq.com/@hchen549/leaflet)
+* R Markdown
+  1. All the Rmd files can be accessed on [Github](https://github.com/hchen549/Stat479_FinalProject)
 
