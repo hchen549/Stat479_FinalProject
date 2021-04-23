@@ -4,116 +4,20 @@ description: |
   Objectives and Significance of the Project
 site: distill::distill_website
 
+
 ---
 
-<div class="row" style="padding-top: 10px;">
+<div class="row" style="padding-top: 0px;">
 <div class="col-sm-10">
 
-# **Stat 479**
 
-### *Madison Crime* {style="padding-top: 0px;"}
+### *Madison Crime* 
 
-This is the course website for Stat 479 Data Visualization (Spring 2021) Final Project Department of Statistics, UW-Madison.
+This is the website for Stat 479 Data Visualization Final Project (Group 2) Department of Statistics, UW-Madison.
 
+
+### Introduction
 
 According to the Madison Police Department's annual reports from 2015 to 2019, the crime statistics have shown an increase from 14,265 to 26,689. The increasing index leads us to the idea of constructing a data visualization in community crime analysis. By integrating the map of Madison with visual techniques, it will come in handy for residents to check street safety and for future researchers to analyze related topics such as the crime rates in Madison based on crime category, date, and zip codes.
 
 
-### *Data Source*
-
-
-### *Conclusion*
-
-
-
-
-
-</div>
-
-</div>
-
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(tidyr)
-library(leaflet)
-library("robservable")
-library(rgdal)
-library("ggnetwork")
-library("sf")
-data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.csv")
-```
-
-
-
-
-```{r}
-# robservable("@hchen549/final-project", include = c("viewof crimeCategory","viewof chosenDate", "crimePlot"),height = 800)
-```
-
-
-
-```{r figure.height = 3}
-# robservable("@hchen549/heatmap", include = c("chart_2019") ,
-#             input = list(
-#     title = "COVID-19 deaths",
-#     subtitle = "Cumulative number of COVID-19 deaths by country",
-#     source = "Source : Johns Hopkins University"
-#   ),height = 150, width = 1200)
-robservable("@hchen549/heatmap", include = c("chart_2020"))
-robservable("@hchen549/heatmap", include = c("chart_2021"))
-
-```
-
-
-```{r echo=FALSE}
-data$Occur_date <- format(as.Date(data$Occur_date, format = "%m/%d/%Y"), "%Y-%m-%d")
-data$Occur_weekday <- weekdays(as.Date(data$Occur_date))
-new_data <- data[, c(10,13,9,2,12,11,5,6,7,8)] # reoder columns
-new_data<-new_data[-c(7,39,58,62), ]
-new_data<-new_data[!grepl("1971|1973|1994|1997|2008|2011|2018", new_data$Occur_date),]
-new_data$time<-format(strptime(new_data$time, "%I:%M %p"), format="%H:%M")
-
-new_data<- new_data %>% 
-  arrange(desc(Occur_date)) %>%
-  filter(!is.na(lon)) %>%
-  filter(!is.na(lat))
-
-# new_data
-geo_data = st_as_sf(new_data, coords = c("lon", "lat"),  crs = 4326)
-# geo_data
-
-# write.csv(new_data, "new_data.csv")
-```
-
-```{r echo=FALSE}
-robbery = new_data %>%
-  filter(incident == "Robbery")
-disturbance = new_data %>%
-  filter(incident == "Disturbance")
-```
-
-```{r echo=FALSE}
-zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_53714.geojson")
-
-```
-
-```{r}
-robservable("@hchen549/leaflet", include = c("viewof crimeCategory", "viewof start_date", "viewof end_date", "crimeMap"), height = 800, width = 600)
-```
-
-
-
-
-```{r}
-m = leaflet() %>%
-  addTiles() %>%
-  #addProviderTiles(providers$Stamen.Watercolor) %>%
-  addPolygons(data = zip53714, weight = 1) %>%
-  addCircleMarkers(lng = robbery$lon, lat = robbery$lat, color = "red", radius = 0.5, group = "robbery") %>%
-  addCircleMarkers(lng = disturbance$lon, lat = disturbance$lat, color = "blue", radius = 0.5, group = "disturbance") %>%
-  addLayersControl(overlayGroups = c("robbery", "disturbance"),
-                   options = layersControlOptions(collapsed = F)) %>%
-  setView(lng = -89.23, lat =43.04, zoom = 10)
-m
-```

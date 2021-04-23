@@ -17,6 +17,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### Data Source
 
-
-
 The raw data we found is in the 2019 to 2021 incidents reports in the [City of Madison Police Department webpage](https://www.cityofmadison.com/police/newsroom/incidentreports/). The incidents report contains six major parts, including release date, incident category, case number, address, the release person, and the update date. In addition to the major information, a detailed recording of the incident situation is presented as clicking each [case.](https://www.cityofmadison.com/police/newsroom/incidentreports/incident.cfm?id=28326) With the above data, an extensive [data manipulation](https://docs.google.com/spreadsheets/d/14t1SoGIT-gLi03uqGJSeXHm7P8TMx43eeJLtNDRCeow/edit?usp=sharing) has been done to prepare the data for further visualization. For example, the time of day and weekday is added to the release date and the longitude, and latitude information is added based on the address.
+
+
+### Data Manipulation
+
+Thereafter, extensive data manipulation has been done to prepare the data. Based on web scraping code in python, we extracted the raw data from webpages and saved it as the first version of our dataset in csv format. Going through the data, we found several issues that contain unsorted dates, infunctional values in addresses, and redundant columns. Tidyverse library in R is employed to sort the occurrence dates of crimes descendingly from 2021 to 2019. Unclear locations are crossed out. Date and time formatting are changed for the convenience of converting date to day of week and future visualization. 
+
+Additionally, through python packages named BeautifulSoup and Request, the associated geographic variables with incident locations are added to the dataset. The derived data includes counts of incidents by zip code and weekday classification are conducted and added as new columns in the dataset. Derived data are important menu elements in our visualization. For the final version of the dataset, there are 10 variables in the final version of the dataset, including Occur_date, occur_weekday, incident, cases, time, location, release, zip, lat, and lon. (https://docs.google.com/spreadsheets/d/14t1SoGIT-gLi03uqGJSeXHm7P8TMx43eeJLtNDRCeow/edit?usp=sharing)
+

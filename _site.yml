@@ -22,7 +22,7 @@ output:
     code_folding: true
     collapsed: false
     number_sections: false
-    # css: style.css
+    css: theme.css
 # collections:
 #   posts:
 #     canonical: false

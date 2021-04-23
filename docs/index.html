@@ -2034,19 +2034,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
-  <script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-  <link href="site_libs/observable-runtime-4.7.2/inspector.css" rel="stylesheet" />
-  <script src="site_libs/observable-runtime-4.7.2/runtime.umd.js"></script>
-  <script src="site_libs/robservable-utils-0.1.0/utils.js"></script>
-  <script src="site_libs/robservable-binding-0.2.0/robservable.js"></script>
-  <script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
-  <link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-  <script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-  <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-  <script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
-  <script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-  <link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-  <script src="site_libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2056,8 +2043,116 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
+  <style type="text/css">
+  /* base variables */
+
+  /* Edit the CSS properties in this file to create a custom
+     Distill theme. Only edit values in the right column
+     for each row; values shown are the CSS defaults.
+     To return any property to the default,
+     you may set its value to: unset
+     All rows must end with a semi-colon.                      */
+
+  /* Optional: embed custom fonts here with `@import`          */
+  /* This must remain at the top of this file.                 */
+  @import url('https://fonts.googleapis.com/css2?family=Lato');
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Mono');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+  html {
+    /*-- Main font sizes --*/
+    --title-size:      50px;
+    --body-size:       1.0rem;                     /* edited */
+    --code-size:       0.9rem;                     /* edited */
+    --aside-size:      12px;
+    --fig-cap-size:    13px;
+    /*-- Main font colors --*/
+    --title-color:     #000000;
+    --heading-color:   rgba(0, 0, 0, 0.8);
+    --body-color:      #383838;                    /* edited */
+    --aside-color:     rgba(0, 0, 0, 0.6);
+    --fig-cap-color:   rgba(0, 0, 0, 0.6);
+    /*-- Specify custom fonts ~~~ must be imported above   --*/
+    --heading-font:    'Lato', sans-serif;         /* edited */
+    --mono-font:       'Fira Mono', monospace;     /* edited */
+    --body-font:       'Lato', sans-serif;         /* edited */
+    --navbar-font:     'Montserrat', sans-serif;   /* edited */
+  }
+
+  /*-- ARTICLE METADATA --*/
+  d-byline {
+    --heading-size:    0.6rem;
+    --heading-color:   rgba(0, 0, 0, 0.5);
+    --body-size:       0.8rem;
+    --body-color:      rgba(0, 0, 0, 0.8);
+  }
+
+  /*-- ARTICLE TABLE OF CONTENTS --*/
+  .d-contents {
+    --heading-size:    18px;
+    --contents-size:   13px;
+  }
+
+  /*-- ARTICLE APPENDIX --*/
+  d-appendix {
+    --heading-size:    15px;
+    --heading-color:   rgba(0, 0, 0, 0.65);
+    --text-size:       0.8em;
+    --text-color:      rgba(0, 0, 0, 0.5);
+  }
+
+  /*-- WEBSITE HEADER + FOOTER --*/
+  /* These properties only apply to Distill sites and blogs  */
+
+  .distill-site-header {
+    --title-size:       20px;                      /* edited */
+    --text-color:       #FFFFFF;                   /* edited */
+    --text-size:        20px;                      /* edited */
+    --hover-color:      #383838;                   /* edited */
+    --bkgd-color:       rgb(249, 83, 85);          /* edited */
+  }
+
+  .distill-site-footer {
+    --text-color:       rgba(255, 255, 255, 0.8);
+    --text-size:        15px;
+    --hover-color:      white;
+    --bkgd-color:       #0F2E3D;
+  }
+
+
+  /*-- Additional custom styles --*/
+
+  .posts-list .metadata .publishedDate {
+      color: rgb(249, 83, 85);
+  }
+
+  d-article p code {
+    color: #383838;
+    background: rgba(249, 83, 85, 0.1);
+    font-weight: 400;
+    font-size: 0.9em;
+  }
+
+  d-article a {
+      border-bottom: 2px solid rgba(249, 83, 85, 0.4);
+      text-decoration: none;
+  }
+
+  .distill-site-header .title {
+      font-weight: 600; 
+  }
+
+  ul > li::marker {
+    color: rgb(249, 83, 85);
+  }
+
+  #visualization {
+    vertical-align: text-top
+  }
+  </style>
   <!--/radix_placeholder_site_in_header-->
 
+  <link rel="stylesheet" href="theme.css" type="text/css"/>
 
 </head>
 
@@ -2101,168 +2196,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
-<div class="row" style="padding-top: 10px;">
-<section id="stat-479" class="col-sm-10">
-<h1><strong>Stat 479</strong></h1>
-<h3 style="padding-top: 0px;" id="madison-crime"><em>Madison Crime</em></h3>
-<p>This is the course website for Stat 479 Data Visualization (Spring 2021) Final Project Department of Statistics, UW-Madison.</p>
+<div class="d-contents">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#madison-crime"><em>Madison Crime</em></a></li>
+<li><a href="#introduction">Introduction</a></li>
+</ul>
+</nav>
+</div>
+<div class="row" style="padding-top: 0px;">
+<div class="col-sm-10">
+
+
+<h3 id="madison-crime"><em>Madison Crime</em></h3>
+<p>This is the website for Stat 479 Data Visualization Final Project (Group 2) Department of Statistics, UW-Madison.</p>
+<h3 id="introduction">Introduction</h3>
 <p>According to the Madison Police Department’s annual reports from 2015 to 2019, the crime statistics have shown an increase from 14,265 to 26,689. The increasing index leads us to the idea of constructing a data visualization in community crime analysis. By integrating the map of Madison with visual techniques, it will come in handy for residents to check street safety and for future researchers to analyze related topics such as the crime rates in Madison based on crime category, date, and zip codes.</p>
-<h3 id="data-source"><em>Data Source</em></h3>
-<h3 id="conclusion"><em>Conclusion</em></h3>
-</section>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rstudio.github.io/leaflet/'>leaflet</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://juba.github.io/robservable/'>"robservable"</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://rgdal.r-forge.r-project.org'>rgdal</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/briatte/ggnetwork'>"ggnetwork"</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://r-spatial.github.io/sf/'>"sf"</a></span><span class='op'>)</span>
-<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://geog573spring2021.s3.amazonaws.com/original_dataset.csv"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># robservable("@hchen549/final-project", include = c("viewof crimeCategory","viewof chosenDate", "crimePlot"),height = 800)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># robservable("@hchen549/heatmap", include = c("chart_2019") ,</span>
-<span class='co'>#             input = list(</span>
-<span class='co'>#     title = "COVID-19 deaths",</span>
-<span class='co'>#     subtitle = "Cumulative number of COVID-19 deaths by country",</span>
-<span class='co'>#     source = "Source : Johns Hopkins University"</span>
-<span class='co'>#   ),height = 150, width = 1200)</span>
-<span class='fu'><a href='https://juba.github.io/robservable//reference/robservable.html'>robservable</a></span><span class='op'>(</span><span class='st'>"@hchen549/heatmap"</span>, include <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"chart_2020"</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<div id="htmlwidget-f50ec788509bc92440e2" style="width:624px;height:384px;" class="robservable html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f50ec788509bc92440e2">{"x":{"notebook":"@hchen549/heatmap","include":"chart_2020","hide":null,"input":null,"observers":null,"update_height":true,"update_width":true},"evals":[],"jsHooks":[]}</script>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://juba.github.io/robservable//reference/robservable.html'>robservable</a></span><span class='op'>(</span><span class='st'>"@hchen549/heatmap"</span>, include <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"chart_2021"</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<div id="htmlwidget-9fcc8d260193453479d3" style="width:624px;height:384px;" class="robservable html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9fcc8d260193453479d3">{"x":{"notebook":"@hchen549/heatmap","include":"chart_2021","hide":null,"input":null,"observers":null,"update_height":true,"update_width":true},"evals":[],"jsHooks":[]}</script>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>data</span><span class='op'>$</span><span class='va'>Occur_date</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>Occur_date</span>, format <span class='op'>=</span> <span class='st'>"%m/%d/%Y"</span><span class='op'>)</span>, <span class='st'>"%Y-%m-%d"</span><span class='op'>)</span>
-<span class='va'>data</span><span class='op'>$</span><span class='va'>Occur_weekday</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/weekday.POSIXt.html'>weekdays</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>Occur_date</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>new_data</span> <span class='op'>&lt;-</span> <span class='va'>data</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>13</span>,<span class='fl'>9</span>,<span class='fl'>2</span>,<span class='fl'>12</span>,<span class='fl'>11</span>,<span class='fl'>5</span>,<span class='fl'>6</span>,<span class='fl'>7</span>,<span class='fl'>8</span><span class='op'>)</span><span class='op'>]</span> <span class='co'># reoder columns</span>
-<span class='va'>new_data</span><span class='op'>&lt;-</span><span class='va'>new_data</span><span class='op'>[</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>7</span>,<span class='fl'>39</span>,<span class='fl'>58</span>,<span class='fl'>62</span><span class='op'>)</span>, <span class='op'>]</span>
-<span class='va'>new_data</span><span class='op'>&lt;-</span><span class='va'>new_data</span><span class='op'>[</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"1971|1973|1994|1997|2008|2011|2018"</span>, <span class='va'>new_data</span><span class='op'>$</span><span class='va'>Occur_date</span><span class='op'>)</span>,<span class='op'>]</span>
-<span class='va'>new_data</span><span class='op'>$</span><span class='va'>time</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/strptime.html'>strptime</a></span><span class='op'>(</span><span class='va'>new_data</span><span class='op'>$</span><span class='va'>time</span>, <span class='st'>"%I:%M %p"</span><span class='op'>)</span>, format<span class='op'>=</span><span class='st'>"%H:%M"</span><span class='op'>)</span>
-
-<span class='va'>new_data</span><span class='op'>&lt;-</span> <span class='va'>new_data</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>Occur_date</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>lon</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>lat</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># new_data</span>
-<span class='va'>geo_data</span> <span class='op'>=</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_as_sf.html'>st_as_sf</a></span><span class='op'>(</span><span class='va'>new_data</span>, coords <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"lon"</span>, <span class='st'>"lat"</span><span class='op'>)</span>,  crs <span class='op'>=</span> <span class='fl'>4326</span><span class='op'>)</span>
-<span class='co'># geo_data</span>
-
-<span class='co'># write.csv(new_data, "new_data.csv")</span>
-</code></pre>
-</div>
-</details>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>robbery</span> <span class='op'>=</span> <span class='va'>new_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>incident</span> <span class='op'>==</span> <span class='st'>"Robbery"</span><span class='op'>)</span>
-<span class='va'>disturbance</span> <span class='op'>=</span> <span class='va'>new_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>incident</span> <span class='op'>==</span> <span class='st'>"Disturbance"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>zip53714</span> <span class='op'>&lt;-</span> <span class='fu'>rgdal</span><span class='fu'>::</span><span class='fu'><a href='http://rgdal.r-forge.r-project.org/reference/readOGR.html'>readOGR</a></span><span class='op'>(</span><span class='st'>"https://geog573spring2021.s3.amazonaws.com/US_ZC_53714.geojson"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>OGR data source with driver: GeoJSON 
-Source: &quot;https://geog573spring2021.s3.amazonaws.com/US_ZC_53714.geojson&quot;, layer: &quot;US_ZC_53714&quot;
-with 1 features
-It has 3 fields</code></pre>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://juba.github.io/robservable//reference/robservable.html'>robservable</a></span><span class='op'>(</span><span class='st'>"@hchen549/leaflet"</span>, include <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"viewof crimeCategory"</span>, <span class='st'>"viewof start_date"</span>, <span class='st'>"viewof end_date"</span>, <span class='st'>"crimeMap"</span><span class='op'>)</span>, height <span class='op'>=</span> <span class='fl'>800</span>, width <span class='op'>=</span> <span class='fl'>600</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<div id="htmlwidget-15caf9c9b8ee5b8e8c9a" style="width:600px;height:800px;" class="robservable html-widget"></div>
-<script type="application/json" data-for="htmlwidget-15caf9c9b8ee5b8e8c9a">{"x":{"notebook":"@hchen549/leaflet","include":["viewof crimeCategory","viewof start_date","viewof end_date","crimeMap"],"hide":null,"input":null,"observers":null,"update_height":true,"update_width":true},"evals":[],"jsHooks":[]}</script>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>addTiles</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='co'>#addProviderTiles(providers$Stamen.Watercolor) %&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>addPolygons</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>zip53714</span>, weight <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>addCircleMarkers</a></span><span class='op'>(</span>lng <span class='op'>=</span> <span class='va'>robbery</span><span class='op'>$</span><span class='va'>lon</span>, lat <span class='op'>=</span> <span class='va'>robbery</span><span class='op'>$</span><span class='va'>lat</span>, color <span class='op'>=</span> <span class='st'>"red"</span>, radius <span class='op'>=</span> <span class='fl'>0.5</span>, group <span class='op'>=</span> <span class='st'>"robbery"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>addCircleMarkers</a></span><span class='op'>(</span>lng <span class='op'>=</span> <span class='va'>disturbance</span><span class='op'>$</span><span class='va'>lon</span>, lat <span class='op'>=</span> <span class='va'>disturbance</span><span class='op'>$</span><span class='va'>lat</span>, color <span class='op'>=</span> <span class='st'>"blue"</span>, radius <span class='op'>=</span> <span class='fl'>0.5</span>, group <span class='op'>=</span> <span class='st'>"disturbance"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addLayersControl.html'>addLayersControl</a></span><span class='op'>(</span>overlayGroups <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"robbery"</span>, <span class='st'>"disturbance"</span><span class='op'>)</span>,
-                   options <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addLayersControl.html'>layersControlOptions</a></span><span class='op'>(</span>collapsed <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-methods.html'>setView</a></span><span class='op'>(</span>lng <span class='op'>=</span> <span class='op'>-</span><span class='fl'>89.23</span>, lat <span class='op'>=</span><span class='fl'>43.04</span>, zoom <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
-<span class='va'>m</span>
-</code></pre>
-</div>
-</details>
-<div id="htmlwidget-6d6b5acd566a359edc02" style="width:624px;height:384px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6d6b5acd566a359edc02">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addPolygons","args":[[[[{"lng":[-89.3015,-89.3015,-89.3008,-89.3006,-89.3006,-89.3005,-89.2994,-89.2872,-89.286,-89.2858,-89.2859,-89.2858,-89.2838,-89.2853,-89.2866,-89.2863,-89.2891,-89.2943,-89.294,-89.2958,-89.2993,-89.3112,-89.3144,-89.315,-89.3163,-89.325,-89.3263,-89.328,-89.3345,-89.3341,-89.3326,-89.3319,-89.3324,-89.3334,-89.3373,-89.338,-89.3384,-89.3393,-89.3412,-89.341,-89.3414,-89.3391,-89.3355,-89.3343,-89.3372,-89.3376,-89.3286,-89.3255,-89.3214,-89.3151,-89.3015],"lat":[43.1138,43.1065,43.1065,43.1058,43.1057,43.1056,43.1053,43.101,43.1002,43.0991,43.0929,43.0913,43.0845,43.0845,43.0847,43.0878,43.0861,43.0862,43.0844,43.0844,43.0844,43.0841,43.0852,43.0839,43.0839,43.0837,43.0836,43.0861,43.09,43.0911,43.0932,43.0942,43.0958,43.0973,43.0975,43.0992,43.0999,43.1018,43.1035,43.1035,43.1041,43.1062,43.1063,43.1066,43.1068,43.1075,43.1142,43.1162,43.1189,43.114,43.1138]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":1,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[43.0527993,43.0838048,43.0838048,43.0337008,43.0640378,43.1276361,43.1334719,43.0609276,43.0722903,43.0506453,43.1177159,43.1177159,43.0643723,43.0601118,43.1267508,43.1339758,43.1339758,43.0304393,43.1422048,43.0608229,43.1206465,43.1376665,43.120749,43.1111499,43.0348447,43.0742605,43.1290453,43.1181315,43.1189483,43.0330263,43.1331149,43.1138133,43.1114024,43.0467269,43.1108243,43.1108243,43.1035144,43.1267567,43.1379834,43.0324122,43.13135,43.1222865,43.0467269,43.067984,43.0565625,43.060109,43.0798491,43.042313,43.1427452,43.1394938,43.1300607,43.0544732,43.124897,43.0323706,43.038084,43.0698949,43.0527203,43.1231134,43.0313531,43.1284458,43.1239217,43.1239217,43.1333449,43.1231134,43.074956,43.0781243,43.1181315,43.0562545,43.0846673,43.0721362,43.0417309,43.1118184,43.0986302,43.1258466,43.0896761,43.080772,43.0760909,43.0843264,43.0746101,43.074956,43.074956,43.1025612,43.1239217,43.0842135,43.1302413,43.0792851,43.0792851,43.073979,43.1125835,43.1235174,43.0521221,43.0846673,43.0422516,43.0776345,43.078642,43.0489742,43.1113675,43.0992758,43.0779521,43.1365931,43.0637256,43.0812817,43.1271072,43.0457866,43.0732541,43.0682413,43.0573878,43.0573878,43.0525819,43.06774,43.067722,43.1263645,43.0640054,43.0451899,43.0324947,43.120749,43.120749,43.0992758,43.0446678,43.1339758,43.127669,43.0795735,43.0673208,43.0673208,43.0684203,43.0268165,43.0908039,43.0726376,43.124897,43.0573878,43.0342197,43.061336,43.1264121,43.0372437,43.0670206,43.0573878,43.0520302,43.0495382,43.0898089,43.1026185,43.0824343,43.1205253,43.0746101,43.1241004,43.1348399,43.135206,43.0311327,43.0509044,43.0673823,43.0608712,43.0587454,43.1026185,43.1122599,43.0348447,43.0613181,43.0613181,43.0988773,43.0136861,43.0608808,43.0754388,43.0482601,43.1273784,43.0918823,43.0549785,43.0535424,43.1295597,43.0832095,43.124897,43.0768455,43.1345304,43.07652,43.1236261,43.0609816,43.1272426,43.1272426,43.0735602,43.1130561,43.1080694,43.0912973,43.0912973,43.1108243,43.1331149,43.1255801,43.0838522,43.1290453,43.127669,43.0311327,43.0311327,43.0839638,43.0313497,43.0735179,43.0333512,43.0327359,43.0327359,43.1177159,43.0735784,43.0693161,43.0766584,43.0838522,43.0813438,43.0458975,43.0281425,43.084486,43.1037753,43.0518352,43.0588435,43.0463626,43.0709329,43.1359956,43.0747751,43.0800392,43.0362474,43.1295617,43.074861,43.0487097,43.0462657,43.0507929,43.1332953,43.1289233,43.0630953,43.0299913,43.1335357,43.0801596,43.0832095,43.0467269,43.1289233,43.0346068,43.127668,43.1394938,43.052146,43.0961814,43.0695943,43.0386976,43.0560013,43.0294699,43.032186,43.0498188,43.0269544,43.1145074,43.0372577,43.0451899,43.0835813,43.0835813,43.0334418,43.0612042,43.1022049,43.0733704,43.1028425,43.1181315,43.101806,43.0613179,43.0992758,43.0992758,43.1321894,43.0495922,43.081473,43.0500614,43.0630162,43.0412025,43.0337008,43.1253009,43.1253009,43.0707069,43.078983,43.0498052,43.1296041,43.0447248,43.0489961,43.0654831,43.1111499,43.0695943,43.0688509,43.0368494,43.124897],[-89.5171601,-89.306577,-89.306577,-89.3667818,-89.5177276,-89.3630365,-89.2913532,-89.5146721,-89.393549,-89.4735969,-89.3183571,-89.3183571,-89.5244376,-89.5034127,-89.3113711,-89.3717018,-89.3717018,-89.3750152,-89.2840779,-89.4971153,-89.3176848,-89.3978121,-89.3243631,-89.3479643,-89.4518661,-89.3820254,-89.3056058,-89.3239695,-89.3215373,-89.4763375,-89.2997303,-89.3193757,-89.3597785,-89.4870647,-89.3642213,-89.3642213,-89.3399177,-89.3087384,-89.300269,-89.4229766,-89.298486,-89.3665888,-89.4870647,-89.4044837,-89.4963956,-89.491287,-89.3770045,-89.394429,-89.283781,-89.298894,-89.3631846,-89.3962699,-89.3052868,-89.4794419,-89.4898493,-89.451625,-89.4512186,-89.3142812,-89.4238463,-89.3588154,-89.3147975,-89.3147975,-89.3024115,-89.3142812,-89.3927755,-89.3721438,-89.3239695,-89.5075103,-89.3037889,-89.4024519,-89.5180282,-89.3632612,-89.3222691,-89.3034378,-89.3693387,-89.3678943,-89.391654,-89.3028228,-89.3938659,-89.3927755,-89.3927755,-89.2940542,-89.3147975,-89.3762349,-89.3667296,-89.383818,-89.383818,-89.459415,-89.3620388,-89.3128214,-89.3959648,-89.3037889,-89.3691319,-89.3823373,-89.3819583,-89.503249,-89.3614704,-89.3322194,-89.3910501,-89.3028365,-89.4629229,-89.3791614,-89.3076921,-89.49101,-89.5266501,-89.4024865,-89.5059068,-89.5059068,-89.3962632,-89.4073633,-89.4057121,-89.3003358,-89.3138494,-89.3935155,-89.4775406,-89.3243631,-89.3243631,-89.3322194,-89.2682238,-89.3717018,-89.362244,-89.3831737,-89.3904642,-89.3904642,-89.393645,-89.4136651,-89.3671599,-89.4248215,-89.3052868,-89.5059068,-89.4448719,-89.5126875,-89.3117481,-89.454591,-89.5055601,-89.5059068,-89.3984909,-89.4954628,-89.3059649,-89.346816,-89.366681,-89.2996727,-89.3938659,-89.3635092,-89.3616718,-89.363337,-89.4619575,-89.4714115,-89.504618,-89.4561124,-89.5179727,-89.346816,-89.3634808,-89.4518661,-89.5180123,-89.5180123,-89.3015781,-89.4979887,-89.514738,-89.3907905,-89.4812146,-89.3067853,-89.3555148,-89.5003503,-89.4744574,-89.3092764,-89.3779574,-89.3052868,-89.3929635,-89.3712946,-89.38674,-89.3135174,-89.4008482,-89.308127,-89.308127,-89.3942487,-89.3641381,-89.3354621,-89.3608257,-89.3608257,-89.3642213,-89.2997303,-89.2979791,-89.3616863,-89.3056058,-89.362244,-89.4619575,-89.4619575,-89.3686885,-89.4211062,-89.3917377,-89.4229622,-89.4226965,-89.4226965,-89.3183571,-89.2817449,-89.401053,-89.3971456,-89.3616863,-89.3671071,-89.3946069,-89.4595308,-89.2688579,-89.3419911,-89.4715865,-89.5058928,-89.4804626,-89.3918188,-89.3756562,-89.3955384,-89.387893,-89.4570313,-89.3075655,-89.3934697,-89.5066877,-89.4965417,-89.3944559,-89.3690964,-89.3629625,-89.5219913,-89.4934007,-89.355357,-89.3705723,-89.3779574,-89.4870647,-89.3629625,-89.4233243,-89.3619627,-89.298894,-89.5142391,-89.3102726,-89.3254008,-89.3925535,-89.5269082,-89.418236,-89.497899,-89.5042226,-89.4892149,-89.3286129,-89.4047174,-89.3935155,-89.3154489,-89.3154489,-89.3805512,-89.497343,-89.3473716,-89.3894419,-89.3462234,-89.3239695,-89.345314,-89.4010982,-89.3322194,-89.3322194,-89.2995244,-89.4747715,-89.3753149,-89.472039,-89.512653,-89.3952894,-89.3667818,-89.3097375,-89.3097375,-89.4073717,-89.3875408,-89.3010825,-89.3080111,-89.3952358,-89.3413692,-89.4158927,-89.3479643,-89.3254008,-89.3924767,-89.4043871,-89.3052868],0.5,null,"robbery",{"interactive":true,"className":"","stroke":true,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[43.1020189,43.0497869,43.0472228,43.0986302,43.0986302,43.135956,43.0498188,43.1248734,43.1110204,43.1084079,43.1073203,43.1073203,43.1068997,43.0719608,43.0430478,43.1295617,43.1328864,43.1328864,43.1406073,43.1177159,43.0814465,43.074861,43.031598,43.0754426,43.0754631,43.074913,43.0987616,43.0723529,43.1209941,43.0653163,43.0980522,43.1385591,43.0606348,43.0747245,43.0728093,43.0609513,43.0713284,43.0986302,43.0744237,43.0986302,43.0761827,43.0974734,43.0149801,43.0149801,43.073883,43.0974734,43.0756129,43.1096584,43.0749211,43.0746681,43.0746681,43.090936,43.0919985,43.074861,43.1339758,43.1309577,43.0733704,43.1300961,43.0673823,43.074913,43.0912973,43.0337008,43.1316389,43.0656742,43.1096584,43.0474662,43.0474662,43.0308363,43.0319618,43.0389415,43.074913,43.1276876,43.0462872,43.0752441,43.1240173],[-89.3446491,-89.4515038,-89.5038856,-89.3222691,-89.3222691,-89.3005529,-89.5042226,-89.3046417,-89.3127613,-89.3452922,-89.3342753,-89.3342753,-89.3256919,-89.5148026,-89.393064,-89.3075655,-89.3566392,-89.3566392,-89.3899165,-89.3183571,-89.3754101,-89.3934697,-89.4970348,-89.3776578,-89.3830744,-89.386999,-89.3488858,-89.4007544,-89.3151874,-89.4056457,-89.2945051,-89.3129939,-89.5028521,-89.3938207,-89.3848016,-89.4040236,-89.3880049,-89.3222691,-89.3813659,-89.3222691,-89.3933315,-89.3550011,-89.5012358,-89.5012358,-89.3974128,-89.3550011,-89.3865836,-89.3353739,-89.3882098,-89.3817066,-89.3817066,-89.3335367,-89.3556213,-89.3934697,-89.3717018,-89.3086151,-89.3894419,-89.358838,-89.504618,-89.386999,-89.3608257,-89.3667818,-89.3696923,-89.5012726,-89.3353739,-89.3496192,-89.3496192,-89.480497,-89.4769102,-89.3946714,-89.386999,-89.3630139,-89.4926749,-89.2933473,-89.3594909],0.5,null,"disturbance",{"interactive":true,"className":"","stroke":true,"color":"blue","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":[[],["robbery","disturbance"],{"collapsed":false,"autoZIndex":true,"position":"topright"}]}],"limits":{"lat":[43.0136861,43.1427452],"lng":[-89.5269082,-89.2682238]},"setView":[[43.04,-89.23],10,[]]},"evals":[],"jsHooks":[]}</script>
-</div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

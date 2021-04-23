@@ -12,7 +12,7 @@ output:
 
 ---
 
-<div class="row" style="padding-top: 10px;">
+<div class="row" style="padding-top: 0px;">
 <div class="col-sm-10">
 
 
@@ -83,7 +83,7 @@ crime = new_data %>%
 crime_sum = crime %>%
   group_by(month,year) %>%
   summarise(sumcrime = sum(n)) %>%
-  filter(year == "2019" |year == "2020")
+  filter(year == "2019" |year == "2020" | year == "2021" & month == "1" | year == "2021" & month == "2" )
 
 #ggplot showing the change of number of crime in each month per year
 ggplot(crime_sum) +
@@ -108,21 +108,18 @@ ggplot(crime_sum) +
 # robservable("@hchen549/heatmap", include = c("chart_2021") ,height = 150, width = 1200)
 ```
 
-```{r, fig.width=10, fig.height= 1.6}
-robservable("@hchen549/heatmap", include = c("chart_2020") ,
-            input = list(
-    title = "COVID-19 deaths",
-    subtitle = "Cumulative number of COVID-19 deaths by country",
-    source = "Source : Johns Hopkins University"
-  ))
-robservable("@hchen549/heatmap", include = c("chart_2021") ,
-            input = list(
-    title = "COVID-19 deaths",
-    subtitle = "Cumulative number of COVID-19 deaths by country",
-    source = "Source : Johns Hopkins University"
-  ))
+```{r, fig.width=10, fig.height= 2.2}
+robservable("@hchen549/heatmap", include = c("chart_2019"))
+
+# robservable("@hchen549/heatmap", include = c("chart_2020"))
+# robservable("@hchen549/heatmap", include = c("chart_2021"))
 
 ```
+
+
+
+
+
 
 
 

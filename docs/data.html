@@ -2043,8 +2043,116 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
+  <style type="text/css">
+  /* base variables */
+
+  /* Edit the CSS properties in this file to create a custom
+     Distill theme. Only edit values in the right column
+     for each row; values shown are the CSS defaults.
+     To return any property to the default,
+     you may set its value to: unset
+     All rows must end with a semi-colon.                      */
+
+  /* Optional: embed custom fonts here with `@import`          */
+  /* This must remain at the top of this file.                 */
+  @import url('https://fonts.googleapis.com/css2?family=Lato');
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Mono');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+  html {
+    /*-- Main font sizes --*/
+    --title-size:      50px;
+    --body-size:       1.0rem;                     /* edited */
+    --code-size:       0.9rem;                     /* edited */
+    --aside-size:      12px;
+    --fig-cap-size:    13px;
+    /*-- Main font colors --*/
+    --title-color:     #000000;
+    --heading-color:   rgba(0, 0, 0, 0.8);
+    --body-color:      #383838;                    /* edited */
+    --aside-color:     rgba(0, 0, 0, 0.6);
+    --fig-cap-color:   rgba(0, 0, 0, 0.6);
+    /*-- Specify custom fonts ~~~ must be imported above   --*/
+    --heading-font:    'Lato', sans-serif;         /* edited */
+    --mono-font:       'Fira Mono', monospace;     /* edited */
+    --body-font:       'Lato', sans-serif;         /* edited */
+    --navbar-font:     'Montserrat', sans-serif;   /* edited */
+  }
+
+  /*-- ARTICLE METADATA --*/
+  d-byline {
+    --heading-size:    0.6rem;
+    --heading-color:   rgba(0, 0, 0, 0.5);
+    --body-size:       0.8rem;
+    --body-color:      rgba(0, 0, 0, 0.8);
+  }
+
+  /*-- ARTICLE TABLE OF CONTENTS --*/
+  .d-contents {
+    --heading-size:    18px;
+    --contents-size:   13px;
+  }
+
+  /*-- ARTICLE APPENDIX --*/
+  d-appendix {
+    --heading-size:    15px;
+    --heading-color:   rgba(0, 0, 0, 0.65);
+    --text-size:       0.8em;
+    --text-color:      rgba(0, 0, 0, 0.5);
+  }
+
+  /*-- WEBSITE HEADER + FOOTER --*/
+  /* These properties only apply to Distill sites and blogs  */
+
+  .distill-site-header {
+    --title-size:       20px;                      /* edited */
+    --text-color:       #FFFFFF;                   /* edited */
+    --text-size:        20px;                      /* edited */
+    --hover-color:      #383838;                   /* edited */
+    --bkgd-color:       rgb(249, 83, 85);          /* edited */
+  }
+
+  .distill-site-footer {
+    --text-color:       rgba(255, 255, 255, 0.8);
+    --text-size:        15px;
+    --hover-color:      white;
+    --bkgd-color:       #0F2E3D;
+  }
+
+
+  /*-- Additional custom styles --*/
+
+  .posts-list .metadata .publishedDate {
+      color: rgb(249, 83, 85);
+  }
+
+  d-article p code {
+    color: #383838;
+    background: rgba(249, 83, 85, 0.1);
+    font-weight: 400;
+    font-size: 0.9em;
+  }
+
+  d-article a {
+      border-bottom: 2px solid rgba(249, 83, 85, 0.4);
+      text-decoration: none;
+  }
+
+  .distill-site-header .title {
+      font-weight: 600; 
+  }
+
+  ul > li::marker {
+    color: rgb(249, 83, 85);
+  }
+
+  #visualization {
+    vertical-align: text-top
+  }
+  </style>
   <!--/radix_placeholder_site_in_header-->
 
+  <link rel="stylesheet" href="theme.css" type="text/css"/>
 
 </head>
 
@@ -2093,11 +2201,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#data-source">Data Source</a></li>
+<li><a href="#data-manipulation">Data Manipulation</a></li>
 </ul>
 </nav>
 </div>
 <h3 id="data-source">Data Source</h3>
 <p>The raw data we found is in the 2019 to 2021 incidents reports in the <a href="https://www.cityofmadison.com/police/newsroom/incidentreports/">City of Madison Police Department webpage</a>. The incidents report contains six major parts, including release date, incident category, case number, address, the release person, and the update date. In addition to the major information, a detailed recording of the incident situation is presented as clicking each <a href="https://www.cityofmadison.com/police/newsroom/incidentreports/incident.cfm?id=28326">case.</a> With the above data, an extensive <a href="https://docs.google.com/spreadsheets/d/14t1SoGIT-gLi03uqGJSeXHm7P8TMx43eeJLtNDRCeow/edit?usp=sharing">data manipulation</a> has been done to prepare the data for further visualization. For example, the time of day and weekday is added to the release date and the longitude, and latitude information is added based on the address.</p>
+<h3 id="data-manipulation">Data Manipulation</h3>
+<p>Thereafter, extensive data manipulation has been done to prepare the data. Based on web scraping code in python, we extracted the raw data from webpages and saved it as the first version of our dataset in csv format. Going through the data, we found several issues that contain unsorted dates, infunctional values in addresses, and redundant columns. Tidyverse library in R is employed to sort the occurrence dates of crimes descendingly from 2021 to 2019. Unclear locations are crossed out. Date and time formatting are changed for the convenience of converting date to day of week and future visualization.</p>
+<p>Additionally, through python packages named BeautifulSoup and Request, the associated geographic variables with incident locations are added to the dataset. The derived data includes counts of incidents by zip code and weekday classification are conducted and added as new columns in the dataset. Derived data are important menu elements in our visualization. For the final version of the dataset, there are 10 variables in the final version of the dataset, including Occur_date, occur_weekday, incident, cases, time, location, release, zip, lat, and lon. (<a href="https://docs.google.com/spreadsheets/d/14t1SoGIT-gLi03uqGJSeXHm7P8TMx43eeJLtNDRCeow/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/14t1SoGIT-gLi03uqGJSeXHm7P8TMx43eeJLtNDRCeow/edit?usp=sharing</a>)</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
