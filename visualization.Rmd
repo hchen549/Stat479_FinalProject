@@ -138,7 +138,7 @@ zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_537
 The interactive visualization composite two parts, a menu to select crime category and date range and a map that displays the information of interest. As different selections are made in the menu, the map will change from layers of representations as the perspective and scale of the map vary. With a loose view of the general situation of Madison, the heatmap circle is colored by the density of incidents and serves as the graphical marks on the map. The number that shows on the cluster of heatmap points are the number of incidents in the clustered region. After a zip code area is determined from zoom in the map, the second layer with a focused scale in the streets of the zip code area is displayed. In this layer, each point on the street represents an incident and serves as the graphical marks. A detailed incident summary will display as a floating window by hanging over the mouse on the point. 
 
 ```{r, l-body-outset}
-robservable("@hchen549/leaflet", include = c("viewof crimeCategory", "viewof start_date", "viewof end_date", "crimeMap"), height = 800, width = 600)
+robservable("@hchen549/leaflet-heatmap", include = c("viewof crimeCategory", "viewof start_date", "viewof end_date", "crimeMap"), height = 800, width = 600)
 ```
 
 

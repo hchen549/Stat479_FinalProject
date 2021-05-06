@@ -20,7 +20,7 @@ According to the Madison Police Department's annual reports from 2015 to 2019, t
 
 * Observable Notebook
   1. Time Series [Heatmap](https://observablehq.com/@hchen549/heatmap)
-  2. [Leaflet map](https://observablehq.com/@hchen549/leaflet)
+  2. [Leaflet map](https://observablehq.com/@hchen549/leaflet-heatmap)
 * R Markdown
   1. All the Rmd files can be accessed on [Github](https://github.com/hchen549/Stat479_FinalProject)
 
