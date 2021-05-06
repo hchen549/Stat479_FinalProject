@@ -61,24 +61,27 @@ From the line plot and heatmap, the maximum number of incidents occurred in Sept
 
 
 ```{r}
-new_data$month<-month(as.Date(new_data$Occur_date, "%Y-%m-%d"))
+new_data$month<-month(as.Date(new_data$Occur_date, "%Y-%m-%d")) 
+new_data$monthabb <- factor(month.abb[new_data$month],levels=month.abb)
 new_data$year<-year(as.Date(new_data$Occur_date, "%Y-%m-%d"))
 
 crime = new_data %>%
-  group_by(month,year) %>%
+  group_by(monthabb,year) %>%
   count(incident) 
 
 crime_sum = crime %>%
-  group_by(month,year) %>%
+  group_by(monthabb,year) %>%
   summarise(sumcrime = sum(n)) %>%
-  filter(year == "2019" |year == "2020" | year == "2021" & month == "1" | year == "2021" & month == "2" )
+  filter(year == "2019" |year == "2020")
 
 #ggplot showing the change of number of crime in each month per year
 ggplot(crime_sum) +
-  geom_line(aes(x = as.factor(month), y = sumcrime, group =as.factor(year) ,col = as.factor(year))) +
+  geom_line(aes(x = as.factor(monthabb), y = sumcrime, group =as.factor(year) ,col = as.factor(year)),size = 1) +
   xlab("Month") +
-  ylab("Number of Crime") +
-  scale_colour_discrete( name="year")
+  ylab("Number of crimes") +
+  ggtitle("The number of crimes by month-year") +
+  scale_colour_discrete( name="Year") +
+  theme_bw()
 ```
 
 
@@ -176,7 +179,7 @@ leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron)%>%
   addPolygons(data = zipfile, weight = 2,
               fillColor = pal(unique_zip$count) ,
-              popup = paste("Region: ", unique_zip$zip, "<br>",
+              popup = paste("Zipcode: ", unique_zip$zip, "<br>",
                             "Count: ", unique_zip$count, "<br>")) %>% 
              
   setView(lng = -89.30, lat =43.04, zoom = 9) %>%
@@ -203,13 +206,18 @@ data_2019 = new_data %>%
   drop_na() 
 
 #Stacked bar plot, facet by year
-ggplot(data_2019,aes(x = as.factor(zip), y = n)) +
+
+ggplot(data_2019,aes(x = n, y = as.factor(zip))) +
   geom_col(aes(fill = incident), width = 0.7)+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  xlab("Zip") +
-  ylab("Number of Crime") +
+  theme(axis.text.x = element_text(vjust = 0.5, hjust=1)) +
+  xlab("Number of crimes") +
+  ylab("Zip code") +
   facet_grid(. ~ year) +
-  theme(legend.position = "bottom")
+  labs(fill = "Incident") +
+  theme(legend.position = "bottom") +
+  ggtitle("Comparing zip code and the number of incidents in 2019 and 2020 ") +
+  theme_bw() + 
+  scale_fill_brewer(palette="Set2")
   
 
 ```
