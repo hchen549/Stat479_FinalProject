@@ -105,7 +105,7 @@ ggplot(crime_sum) +
 
 robservable("@hchen549/heatmap", include = c("chart_2019"))
 robservable("@hchen549/heatmap", include = c("chart_2020"))
-robservable("@hchen549/heatmap", include = c("chart_2021"))
+# robservable("@hchen549/heatmap", include = c("chart_2021"))
 
 ```
 
