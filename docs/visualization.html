@@ -2216,11 +2216,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#data-cleaning">Data Cleaning</a></li>
-<li><a href="#visualization">Visualization</a>
+<li><a href="#crime-heatmap-2019---2020">Crime Heatmap (2019 - 2020)</a>
 <ul>
 <li><a href="#number-of-crimes-by-month-year">Number of crimes by month-year</a></li>
 <li><a href="#incidents-by-month-and-weekday">Incidents by month and weekday</a></li>
-<li><a href="#crime-distribution-by-crime-type">Crime Distribution by Crime Type</a></li>
+</ul></li>
+<li><a href="#crime-distribution-by-crime-type">Crime Distribution by Crime Type</a>
+<ul>
+<li><a href="#interactive-map">Interactive Map</a></li>
+</ul></li>
+<li><a href="#crime-by-zipcode">Crime by Zipcode</a>
+<ul>
 <li><a href="#crime-density-map">Crime density map</a></li>
 <li><a href="#incidents-by-zip-code">Incidents by zip code</a></li>
 </ul></li>
@@ -2282,7 +2288,8 @@ Show code
 </div>
 </details>
 </div>
-<h2 id="visualization">Visualization</h2>
+<h2 id="crime-heatmap-2019---2020">Crime Heatmap (2019 - 2020)</h2>
+<p>The two figures below use time series and heatmap to visualize the relationship between time and crime incidents in Madison from 2019 to 2020, specifically through the year, month and week</p>
 <h3 id="number-of-crimes-by-month-year">Number of crimes by month-year</h3>
 <h4 id="navigation">Navigation</h4>
 <p>The time series line plot is a static figure. As the legend on the right shows, the red line represents the number of crimes throughout 2019 and the blue line represents the number of crimes throughout 2020. The x-axis specifies 12 months and the y-axis sets the number of crimes range from 0-130. The amounts of indents number by month are connected by a line to show the trend of incidents of a year.</p>
@@ -2410,7 +2417,9 @@ Source: &quot;https://geog573spring2021.s3.amazonaws.com/US_ZC_53714.geojson&quo
 with 1 features
 It has 3 fields</code></pre>
 </div>
-<h3 id="crime-distribution-by-crime-type">Crime Distribution by Crime Type</h3>
+<h2 id="crime-distribution-by-crime-type">Crime Distribution by Crime Type</h2>
+<p>The interaction crime map is a thorough integration of the previous analysis by time and the following by zip code. It is our core visualization that tries to inform citizens about various crimes that have happened across time.</p>
+<h3 id="interactive-map">Interactive Map</h3>
 <h4 id="navigation-2">Navigation</h4>
 <p>The interactive visualization composite two parts, a menu to select crime category and date range, and a map that displays the information of interest. Multiple crime categories can be selected together. The heatmap circle is colored by the density of incidents and serves as the graphical marks on the map. As color varies from blue to red, the crime density increases. The number that shows on the cluster of heatmap points are the number of incidents in the clustered area.</p>
 <p>After a zip code area is determined from zoom in the map, a focused scale in the streets of the zip code area is displayed. Each point on the street is also a graphical mark that represents an incident. A detailed incident summary will display as a floating window by hanging over the mouse on the point.</p>
@@ -2431,6 +2440,8 @@ Show code
 <p>From the occurrences of red heatmap circles, most crime incidents happen in downtown madison. Changing the time range will show the trend in crime incidents from 2019 to 2020. Comparing between crime categories, weapon violation appears as the reason for the most crime incidents throughout the time range.</p>
 <h4 id="discussion-1">Discussion</h4>
 <p>One surprising information conveyed by the narrowed street view of the map shows that crossroads are a common place where an incident occurs. A potential reason behind the large number of incidents happening at crossroads is that victims may not remember the exact location where the incident happened, so they would report an approximate location around two streets. Some other possible reasons would be that some crossroads are the places that people may not have vision to sense danger that results in a larger amount of incident occurrence.</p>
+<h2 id="crime-by-zipcode">Crime by Zipcode</h2>
+<p>The following figures analyze the relationship between zip code and crime incidents in Madison. The crime density map shows a general visualization of area safety while the bar plot of incidents category is narrowed in scoop.</p>
 <h3 id="crime-density-map">Crime density map</h3>
 <div class="layout-chunk" data-layout="l-body">
 <details>
