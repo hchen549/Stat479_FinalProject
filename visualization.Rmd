@@ -25,6 +25,8 @@ library("ggnetwork")
 library("sf")
 library(lubridate)
 library(sp)
+library(htmlwidgets)
+ library(htmltools)
 data <- read.csv("https://geog573spring2021.s3.amazonaws.com/original_dataset.csv")
 ```
 
@@ -51,13 +53,14 @@ geo_data = st_as_sf(new_data, coords = c("lon", "lat"),  crs = 4326)
 # write.csv(new_data, "new_data.csv")
 ```
 
-## Crime Heatmap (2019 - 2020)
+## Visualization
 
-### Navigation
-The two figures below use time series and heatmap to visualize the relationship between time and crime incidents in Madison from 2019 to 2020, specifically through the year, month and week. Both of the two figures contain full time range through 2019 and 2020. However, the figure stops at February for the year of 2021 because the most recent data our team received stops at the end of February. The time series line plot is a static figure that the color of lines matches the year in interest respectively, as the legend on the right shows. While the x-axis specifies 12 months, the according amounts of indents number by month are connected by a line to show the trend of incidents of a year. For the heatmap, each cube in the figure represents a day according to the weeks by row and months by column. Hanging over the mouse on the cube will show the exact amount of crimes that happened on the selected day. Similar to the function of a calendar, the color density of each cube also represents the incident number to show the level of safety directly from a glance.  
+### Number of crimes by month-year
 
-### Interpretation
-From the line plot and heatmap, the maximum number of incidents occurred in September 2019, and July 2020 (the 2021 summary is still in progress). The day of a week that most incidents occurred is Tuesday. For the least number of incidents, the month for 2019, 2020 are February and the day of a week is Sunday. The day of a week pattern could be related to the working cycle that individuals are more likely to be annoyed to conduct a crime incident by the stress on weekdays. As for the monthly pattern, if we group months to seasons, which June to September are the summer period and December to February are the winter period, we can see that the average incidents are the highest in summer and lowest in winter. In terms of the temperature difference between summer and winter, the visualization consolide the general fact that a higher temperature would trigger more crime incidents. 
+#### Navigation
+The time series line plot is a static figure. As the legend on the right shows, the red line represents the number of crimes throughout 2019 and the blue line represents the number of crimes throughout 2020. The x-axis specifies 12 months and the y-axis sets the number of crimes range from 0-130. The amounts of indents number by month are connected by a line to show the trend of incidents of a year. 
+ 
+
 
 
 ```{r}
@@ -84,6 +87,8 @@ ggplot(crime_sum) +
   theme_bw()
 ```
 
+#### Interpretation
+From the line plot, the maximum number of incidents occurred in September 2019, and July 2020 and the least number of incidents occurred in February 2019 and 2020. Specifically, the number of incidents occured in 2020 outnumbered 2019 in 6 months, including February to March and April to August. The average number of incidents occured in 2020 is larger than that of in 2019.
 
 
 
@@ -99,6 +104,13 @@ ggplot(crime_sum) +
 # robservable("@hchen549/heatmap", include = c("chart_2021") ,height = 150, width = 1200)
 ```
 
+### Incidents by month and weekday
+
+#### Navigation
+Each cube in the heatmap represents a day according to the weeks by row and months by column. The color density of each cube is a representation of the number of crimes. As the color ranges from white to black, the number of crime incidents increase. Hanging over the mouse on the cube will show the exact amount of crimes that happened on the selected day. 
+
+
+
 ```{r, fig.width=10, fig.height= 1.8}
 # robservable("@hchen549/heatmap", include = c("chart_2019"))
 
@@ -109,12 +121,14 @@ robservable("@hchen549/heatmap", include = c("chart_2020"))
 
 ```
 
+#### Interpretation
+From the heatmap, the day of a week that most incidents occurred is Tuesday and the least incidents occured is Sunday. From the color density, it is more convenient to see that most crime incidents clusters to occur from August to November in 2019 and June to September in 2020.
 
 
 
 
-
-
+#### Discussion
+If we group months to seasons, which June to September are the summer period and December to February are the winter period, we can see that the average incidents are the highest in summer and lowest in winter. In terms of the temperature difference between summer and winter, the visualization consolide the general fact that a higher temperature would trigger more crime incidents. The day of a week pattern could be related to the working cycle that individuals are more likely to be annoyed to conduct a crime incident by the stress on weekdays. 
 
 
 
@@ -132,23 +146,31 @@ zip53714 <- rgdal::readOGR("https://geog573spring2021.s3.amazonaws.com/US_ZC_537
 ```
 
 
-## Crime Distribution by Crime Type
+### Crime Distribution by Crime Type
 
-### Navigation
-The interactive visualization composite two parts, a menu to select crime category and date range and a map that displays the information of interest. As different selections are made in the menu, the map will change from layers of representations as the perspective and scale of the map vary. With a loose view of the general situation of Madison, the heatmap circle is colored by the density of incidents and serves as the graphical marks on the map. The number that shows on the cluster of heatmap points are the number of incidents in the clustered region. After a zip code area is determined from zoom in the map, the second layer with a focused scale in the streets of the zip code area is displayed. In this layer, each point on the street represents an incident and serves as the graphical marks. A detailed incident summary will display as a floating window by hanging over the mouse on the point. 
+#### Navigation
+The interactive visualization composite two parts, a menu to select crime category and date range, and a map that displays the information of interest. Multiple crime categories can be selected together. The heatmap circle is colored by the density of incidents and serves as the graphical marks on the map. As color varies from blue to red, the crime density increases. The number that shows on the cluster of heatmap points are the number of incidents in the clustered area. 
+
+After a zip code area is determined from zoom in the map, a focused scale in the streets of the zip code area is displayed. Each point on the street is also a graphical mark that represents an incident. A detailed incident summary will display as a floating window by hanging over the mouse on the point. 
+
 
 ```{r, l-body-outset}
 robservable("@hchen549/leaflet-heatmap", include = c("viewof crimeCategory", "viewof start_date", "viewof end_date", "crimeMap"), height = 800, width = 600)
 ```
 
 
-### Interpretation
+#### Interpretation
 
-The interaction crime map is a thorough integration of the previous analysis by time and by zip code and it is our core visualization that tries to inform citizens about various crimes that have happened across time. Just as previous analysis shows, the weekdays in a week and summer section in all months are the period of time that a larger amount of incidents would occur. Instead, weekend and winter sections are the period of time that less incidents would occur. As for the zip code area pattern, the trend of incidents is decreasing from downtown to suburb areas. One surprising information conveyed by the narrowed street view of the map shows that crossroads are a common place where an incident occurs. A potential reason behind the large number of incidents happening at crossroads is that victims may not remember the exact location where the incident happened, so they would report an approximate location around two streets. Some other possible reasons would be that some crossroads are the places that people may not have vision to sense danger that results in a larger amount of incident occurrence.
+From the occurrences of red heatmap circles, most crime incidents happen in downtown madison. Changing the time range will show the trend in crime incidents from 2019 to 2020. Comparing between crime categories, weapon violation appears as the reason for the most crime incidents throughout the time range. 
+
+#### Discussion
+
+One surprising information conveyed by the narrowed street view of the map shows that crossroads are a common place where an incident occurs. A potential reason behind the large number of incidents happening at crossroads is that victims may not remember the exact location where the incident happened, so they would report an approximate location around two streets. Some other possible reasons would be that some crossroads are the places that people may not have vision to sense danger that results in a larger amount of incident occurrence.
 
 
 
-## Crime by zipcode
+### Crime density map
+
 
 ```{r}
 zipfile = readOGR("./data/wi_zip.shp")
@@ -168,12 +190,32 @@ unique_zip = unique_zip[order(match(unique_zip$zip,zipfile$ZCTA5CE10)), ]
 ```
 
 
-### Navigation
-The following figures analyze the relationship between zip code and crime incidents in Madison. For the map that the edge of each zip code area within Madison is enhanced and the whole area is colored, the density of the area color represents the amount of crime incidents happened in the area. A right corner legend box additionally addresses the numeric percentage of incidents that connects the color of the plot and the time range for the map is from 2019 to 2021. Users can have detailed information about each zipcode region by clicking on the map, where a popup box will display the number of crimes within that zipcode. In addition, the static bar plot has each zip code in Madison set in the x-axis and the total crime incidents are measured from the y-axis. Different from the map, the bar plot contains a time range from 2019 to 2020. The time range difference is applied because of the plot function that the bar plot is more about the relationship between crime categories and zip code. Each of the bars contains crime categories classified by color and the legend below the plot that specifies the color of the crime category is sorted by the descending sequence of total crime type in Madison. 
+#### Navigation
+In the map, the edge of each zip code area within Madison is enhanced and the whole area is colored. The density of the area color represents the amount of crime incidents happened in the area. The left corner legend box addresses the numeric percentage of incidents that connects the color of the plot. Clicking on the map will show a popup box that displays the number of crimes within that zipcode. 
+
+
+
 
 ```{r}
 pal <- colorNumeric("YlOrRd", domain=(unique_zip$count))
 
+tag.map.title <- tags$style(HTML("
+  .leaflet-control.map-title { 
+    transform: translate(-50%,20%);
+    position: fixed !important;
+    left: 50%;
+    text-align: center;
+    padding-left: 5px; 
+    padding-right: 5px; 
+    background: rgba(255,255,255,0.75);
+    font-weight: bold;
+    font-size: 20px;
+  }
+"))
+
+title <- tags$div(
+  tag.map.title, HTML("Crime Distribution by Zipcode")
+)  
 
 leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron)%>%
@@ -183,10 +225,26 @@ leaflet() %>%
                             "Count: ", unique_zip$count, "<br>")) %>% 
              
   setView(lng = -89.30, lat =43.04, zoom = 9) %>%
-  addLegend(position = "bottomleft", values= unique_zip$count,pal=pal,title="Counts")
+  addLegend(position = "bottomleft", values= unique_zip$count,pal=pal,title="Counts") %>%
+ addControl(title, position = "topleft", className="map-title")
 
   
 ```
+#### Interpretation
+It can be seen from the density map that the number of crimes are most concentrated in the downtown madison, namely, the 53704 area and then diffuse to the edges.
+
+
+
+
+
+### Incidents by zip code 
+
+#### Navigation
+
+The static bar plot has each zip code in Madison set in the y-axis and the total crime incidents in the x-axis. Each of the bars contains crime categories classified by color and the legend at the right side of the plot that specifies the color of the crime category and is sorted by the alphabetical order. 
+
+
+
 
 ```{r}
 #finding out highest incidents
@@ -222,12 +280,19 @@ ggplot(data_2019,aes(x = n, y = as.factor(zip))) +
 
 ```
 
+#### Interpretation
 
-### Interpretation
+The bar plot of incidents number by zip code confirms the finding in the density map. A pattern for both 2019 and 2020 is that the weapon incidents are taking the major percent of crime incidents in most zip codes.
 
-Overall, the crime density map shows a general visualization of area safety while the bar plot of incidents category is narrowed in scoop. It can be seen from the density map that the number of crimes are most concentrated in the downtown madison, namely, the 53704 area and then decreasingly diffuse to the edges. The bar plot of incidents number by zip code confirms the finding. From the barplot regarding incident category and zip codes, a pattern for both 2019 and 2020 is that the weapon incidents are taking the major percent of crime incidents in most zip codes. Several special cases can be seen in 53717 in 2019 and 53719 in 2020, that the robbery incidents outnumbered weapon incidents. An observation from the map is that the 53717 and 53719 are adjacent to each other. Additionally, several shopping centers are located in the regions, such as Prairie Towne Center, and West Towne Mall. Mall robberies are a common issue and these would be the potential factors for the two regions to have a similar pattern in crime incidents. 
+#### Discussion
 
+Several special cases can be seen in 53717 in 2019 and 53719 in 2020, that the robbery incidents outnumbered weapon incidents. An observation from the map is that the 53717 and 53719 are adjacent to each other. Additionally, several shopping centers are located in the zip code areas, such as Prairie Towne Center, and West Towne Mall. Mall robberies are a common issue and these would be the potential factors for the two areas to have a similar pattern in crime incidents. 
 
+## Conclusion
+
+The project analyzes the crime incidents in Madison from three perspectives, time, geographics, and crime category. The crime incidents have shown distinctive trends from year, months and days of a week. The average number of crime incidents in 2020 outnumbers 2019, the summer crime incidents outnumbers the other seasons and the number of incidents on Tuesdays outnumbers other days of a week. 
+
+From the interactive heatmap and crime density map, downtown Madison, 53704, is the area where most accidents occur. Specifically, the street view of crimes shows that most crime incidents occur at crossroads. Moreover, the crime category analysis points out that weapon violation is the most common crime incident that occurs in Madison. These findings from the visualizations help individuals to better understand the crime incidents in Madison and protect themselves.
 
 
 ## Appendix
